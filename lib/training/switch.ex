@@ -38,8 +38,8 @@ defmodule Training.Switch do
   Initializes a switch into the `:off` state
   """
   @spec init(any()) :: :gen_statem.init_result(GenStateMachine.state())
-  def init(_) do
-    # TODO Start in the off state
+  def init(_args) do
+    {:ok, :off, 0}
   end
 
   @doc """
@@ -51,7 +51,7 @@ defmodule Training.Switch do
           GenStateMachine.data()
         ) :: :gen_statem.event_handler_result(GenStateMachine.state())
   def on(:cast, :flip, data) do
-    # TODO Change to the off state
+    {:next_state, :off, data + 1}
   end
 
   def on(_, _, _) do
@@ -67,7 +67,7 @@ defmodule Training.Switch do
           GenStateMachine.data()
         ) :: :gen_statem.event_handler_result(GenStateMachine.state())
   def off(:cast, :flip, data) do
-    # TODO Change to the on state
+    {:next_state, :on, data + 1}
   end
 
   def off(_, _, _) do

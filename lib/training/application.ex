@@ -7,8 +7,7 @@ defmodule Training.Application do
 
   def start(_type, _args) do
     children = [
-      # Starts a worker by calling: GenstatemTraining.Worker.start_link(arg)
-      # {GenstatemTraining.Worker, arg}
+      # Training.Switch.start_link({:off, 0})
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
